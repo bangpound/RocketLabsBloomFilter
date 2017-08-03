@@ -18,11 +18,11 @@ class BitString implements Persister
 
     /**
      * @param string $str
-     * @return BitString
+     * @return static
      */
     public static function createFromString($str)
     {
-        $instance = new self();
+        $instance = new static();
         $instance->bytes = $str;
         $instance->size = strlen($str);
         return $instance;

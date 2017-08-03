@@ -18,7 +18,7 @@ class Redis implements Persister
 
     /**
      * @param array $params
-     * @return Redis
+     * @return static
      */
     public static function create(array $params = [])
     {
@@ -33,7 +33,7 @@ class Redis implements Persister
         $redis->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP);
         $redis->select($db);
 
-        return new self($redis, $key);
+        return new static($redis, $key);
     }
 
     /**

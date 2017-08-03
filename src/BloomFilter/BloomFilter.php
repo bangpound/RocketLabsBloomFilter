@@ -24,7 +24,7 @@ class BloomFilter
      * @param int $approximateSize
      * @param float $falsePositiveProbability
      * @param array $hashFunctions
-     * @return BloomFilter
+     * @return static
      */
     public static function createFromApproximateSize(
         Persister $persister,
@@ -39,7 +39,7 @@ class BloomFilter
         $bitSize = self::optimalBitSize((int) $approximateSize, $falsePositiveProbability);
         $hashCount = self::optimalHashCount($approximateSize, $bitSize);
 
-        return new self($persister, $bitSize, $hashCount, $hashFunctions);
+        return new static($persister, $bitSize, $hashCount, $hashFunctions);
     }
 
     /**
@@ -47,11 +47,11 @@ class BloomFilter
      * @param int $bitSize
      * @param int $hashCount
      * @param array $hashFunctions
-     * @return BloomFilter
+     * @return static
      */
     public static function create($persister, $bitSize, $hashCount, array $hashFunctions = [])
     {
-        return new self($persister, $bitSize, $hashCount, $hashFunctions);
+        return new static($persister, $bitSize, $hashCount, $hashFunctions);
     }
 
     /**
