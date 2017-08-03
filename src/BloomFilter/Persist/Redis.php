@@ -96,6 +96,8 @@ class Redis implements Persister
 
     /**
      * @param int $value
+     * @throws \UnexpectedValueException
+     * @throws \RangeException
      */
     private function assertOffset($value)
     {

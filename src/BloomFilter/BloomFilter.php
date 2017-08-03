@@ -25,6 +25,8 @@ class BloomFilter
      * @param float $falsePositiveProbability
      * @param array $hashFunctions
      * @return static
+     * @throws \LogicException
+     * @throws \RangeException
      */
     public static function createFromApproximateSize(
         Persister $persister,
@@ -48,6 +50,7 @@ class BloomFilter
      * @param int $hashCount
      * @param array $hashFunctions
      * @return static
+     * @throws \LogicException
      */
     public static function create($persister, $bitSize, $hashCount, array $hashFunctions = [])
     {
@@ -59,6 +62,7 @@ class BloomFilter
      * @param int $size
      * @param int $hashCount
      * @param array $hashFunctions
+     * @throws \LogicException
      */
     public function __construct(Persister $persister, $size, $hashCount, array $hashFunctions = [])
     {

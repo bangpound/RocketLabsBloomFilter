@@ -71,6 +71,7 @@ class BitString implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
      */
     public function set($bit)
     {
@@ -92,6 +93,8 @@ class BitString implements Persister
 
     /**
      * @param int $value
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     private function assertOffset($value)
     {
@@ -107,6 +110,8 @@ class BitString implements Persister
     /**
      * @param int $offset
      * @return int
+     * @throws \UnexpectedValueException
+     * @throws \RangeException
      */
     private function offsetToByte($offset)
     {
