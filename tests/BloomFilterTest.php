@@ -172,4 +172,35 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
         $filterForGet = new BloomFilter($persister, 1024, 3);
         $this->assertFalse($filterForGet->has('Not Existing test String'));
     }
+
+
+    /**
+     * @test
+     * @expectedException \LogicException
+     */
+    public function unavailableHashes()
+    {
+        $persister = $this->getMock(Persister::class);
+        new BloomFilter($persister, 1024, 3, ['NotAFilter']);
+    }
+
+    /**
+     * @test
+     * @expectedException \RangeException
+     */
+    public function createFromApproximateSizeOutOfRange()
+    {
+        $persister = $this->getMock(Persister::class);
+        BloomFilter::createFromApproximateSize($persister, 1024, 2);
+    }
+
+    /**
+     * @test
+     */
+    public function create()
+    {
+        $persister = $this->getMock(Persister::class);
+        $filter = BloomFilter::create($persister,1024, 3);
+        $this->assertInstanceOf(BloomFilter::class, $filter);
+    }
 }
