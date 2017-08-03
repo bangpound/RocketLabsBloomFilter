@@ -35,10 +35,10 @@ class BitStringTest extends \PHPUnit_Framework_TestCase
         $allNotSetBitsAreOff = true;
 
         for ($i = 0; $i < BitString::DEFAULT_SIZE * 8; $i++) {
-            if ($i == 100) {
+            if ($i === 100) {
                 continue;
             }
-            $allNotSetBitsAreOff = $persister->get($i) == 0 && $allNotSetBitsAreOff;
+            $allNotSetBitsAreOff = $persister->get($i) === 0 && $allNotSetBitsAreOff;
         }
 
         $this->assertTrue($allNotSetBitsAreOff);
@@ -54,7 +54,7 @@ class BitStringTest extends \PHPUnit_Framework_TestCase
         $allNotSetBitsAreOff = true;
 
         for ($i = 0; $i < BitString::DEFAULT_SIZE * 8; $i++) {
-            $allNotSetBitsAreOff = $persister->get($i) == 0 && $allNotSetBitsAreOff;
+            $allNotSetBitsAreOff = $persister->get($i) === 0 && $allNotSetBitsAreOff;
         }
 
         $this->assertTrue($allNotSetBitsAreOff);
@@ -125,10 +125,10 @@ class BitStringTest extends \PHPUnit_Framework_TestCase
         $persister->set($bit);
         $allNotSetBitsAreOff = true;
          for ($i = 0; $i < $increasedSize; $i++) {
-             if ($i == $bit) {
+             if ($i === $bit) {
                  continue;
              }
-             $allNotSetBitsAreOff = $persister->get($i) == 0 && $allNotSetBitsAreOff;
+             $allNotSetBitsAreOff = $persister->get($i) === 0 && $allNotSetBitsAreOff;
          }
 
 
