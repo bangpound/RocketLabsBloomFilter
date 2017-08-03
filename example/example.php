@@ -7,7 +7,7 @@ use RocketLabs\BloomFilter\Persist\BitString;
 
 function microtime_float()
 {
-    list($usec, $sec) = explode(" ", microtime());
+    list($usec, $sec) = explode(' ', microtime());
     return ((float)$usec + (float)$sec);
 }
 
@@ -20,7 +20,7 @@ $redis->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP);
 $redis->select(0);
 $redis->del('counting_bloom_filter');
 
-$handle = fopen(__DIR__ . "/data.csv", "r");
+$handle = fopen(__DIR__ . '/data.csv', 'r');
 
 while (($data = fgetcsv($handle) ) !== false) {
     $messages[] = $data[0];
