@@ -37,7 +37,7 @@ class Murmur implements Hash
         switch($len) {
             case 3: $h = ($h ^ (ord($data[2]) << 16)) & 4294967295;
             case 2: $h = ($h ^ (ord($data[1]) << 8)) & 4294967295;
-            case 1: $h = ($h ^ (ord($data[0]))) & 4294967295;
+            case 1: $h = ($h ^ ord($data[0])) & 4294967295;
                 $h = ($h * $m) & 4294967295;
         };
         $h = ($h ^ ($h >> 13)) & 4294967295;
