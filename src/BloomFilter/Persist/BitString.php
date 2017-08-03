@@ -36,6 +36,8 @@ class BitString implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function getBulk(array $bits)
     {
@@ -49,6 +51,8 @@ class BitString implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function setBulk(array $bits)
     {
@@ -59,6 +63,8 @@ class BitString implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function get($bit)
     {
@@ -72,6 +78,7 @@ class BitString implements Persister
     /**
      * @inheritdoc
      * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function set($bit)
     {

@@ -48,6 +48,8 @@ class Redis implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function getBulk(array $bits)
     {
@@ -63,6 +65,8 @@ class Redis implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function setBulk(array $bits)
     {
@@ -78,6 +82,8 @@ class Redis implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function get($bit)
     {
@@ -87,6 +93,8 @@ class Redis implements Persister
 
     /**
      * @inheritdoc
+     * @throws \RangeException
+     * @throws \UnexpectedValueException
      */
     public function set($bit)
     {
