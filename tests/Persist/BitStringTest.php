@@ -13,7 +13,7 @@ class BitStringTest extends \PHPUnit_Framework_TestCase
     {
         $persister = new BitString();
 
-        $class = new \ReflectionClass("RocketLabs\\BloomFilter\\Persist\\BitString");
+        $class = new \ReflectionClass(BitString::class);
         $propertyBytes = $class->getProperty('bytes');
         $propertySize = $class->getProperty('size');
         $propertyBytes->setAccessible(true);
@@ -113,7 +113,7 @@ class BitStringTest extends \PHPUnit_Framework_TestCase
     {
         $persister = new BitString();
 
-        $class = new \ReflectionClass("RocketLabs\\BloomFilter\\Persist\\BitString");
+        $class = new \ReflectionClass(BitString::class);
         $propertyBytes = $class->getProperty('bytes');
         $propertySize = $class->getProperty('size');
         $propertyBytes->setAccessible(true);

@@ -4,6 +4,7 @@ namespace RocketLabs\BloomFilter\Test\Hash;
 
 use RocketLabs\BloomFilter\BloomFilter;
 use RocketLabs\BloomFilter\Persist\Redis;
+use RocketLabs\BloomFilter\Persist\Persister;
 
 class BloomFilterTest extends \PHPUnit_Framework_TestCase
 {
@@ -49,7 +50,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
         $redisMock = $this->getMock(\Redis::class);
         $persister = new Redis($redisMock, Redis::DEFAULT_KEY);
 
-        $class = new \ReflectionClass("RocketLabs\\BloomFilter\\BloomFilter");
+        $class = new \ReflectionClass(BloomFilter::class);
         $propertyHashes = $class->getProperty('hashes');
         $propertySize = $class->getProperty('size');
         $propertyHashes->setAccessible(true);
@@ -98,7 +99,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function addToFilter()
     {
-        $persister = $this->getMock('RocketLabs\BloomFilter\Persist\Persister');
+        $persister = $this->getMock(Persister::class);
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
@@ -113,7 +114,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function addBulkFilter()
     {
-        $persister = $this->getMock('RocketLabs\BloomFilter\Persist\Persister');
+        $persister = $this->getMock(Persister::class);
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
@@ -133,7 +134,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function existsInFilter()
     {
-        $persister = $this->getMock('RocketLabs\BloomFilter\Persist\Persister');
+        $persister = $this->getMock(Persister::class);
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
@@ -155,7 +156,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function DoesNotExistInFilter()
     {
-        $persister = $this->getMock('RocketLabs\BloomFilter\Persist\Persister');
+        $persister = $this->getMock(Persister::class);
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
