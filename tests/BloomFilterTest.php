@@ -57,7 +57,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
         $propertySize->setAccessible(true);
         $filter = BloomFilter::createFromApproximateSize($persister, $size, $probability);
 
-        $this->assertEquals($expectedHashSize, count($propertyHashes->getValue($filter)));
+        $this->assertCount($expectedHashSize, $propertyHashes->getValue($filter));
         $this->assertEquals($expectedBitSize, $propertySize->getValue($filter));
     }
 
