@@ -132,6 +132,6 @@ class BitString implements Persister
      */
     private function bitPos($offset)
     {
-        return (int) pow(2, $offset % self::BITS_IN_BYTE);
+        return 2 ** ($offset % self::BITS_IN_BYTE);
     }
 }

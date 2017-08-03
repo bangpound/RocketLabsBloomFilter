@@ -70,7 +70,7 @@ class BloomFilter
 
         if (!array_intersect($this->availableHashes, $hashFunctions)) {
             throw new \LogicException(
-                sprintf('One or more of functions (%s) are not available', join(',', $hashFunctions))
+                sprintf('One or more of functions (%s) are not available', implode(',', $hashFunctions))
             );
         }
 
@@ -101,7 +101,7 @@ class BloomFilter
             $bits[] = $this->getBits($value);
         }
 
-        $this->persister->setBulk(call_user_func_array('array_merge', $bits));
+        $this->persister->setBulk(array_merge(...$bits));
     }
 
     /**
@@ -127,7 +127,7 @@ class BloomFilter
      */
     public static function optimalBitSize($setSize, $falsePositiveProbability = 0.001)
     {
-        return (int) round((($setSize * log($falsePositiveProbability)) / pow(log(2), 2)) * -1);
+        return (int) round((($setSize * log($falsePositiveProbability)) / (log(2) ** 2)) * -1);
     }
 
     /**

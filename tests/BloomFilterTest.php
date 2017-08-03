@@ -16,7 +16,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
         $p = 0.001; // Probability of false positives
 
         $this->assertEquals(
-            round((($n * log($p)) / pow(log(2), 2)) * -1),
+            round((($n * log($p)) / (log(2) ** 2)) * -1),
             BloomFilter::optimalBitSize($n, $p)
         );
     }
