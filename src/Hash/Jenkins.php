@@ -10,7 +10,7 @@ class Jenkins implements Hash
     /**
      * @inheritdoc
      */
-    public function hash($value)
+    public function hash($value):string
     {
         $key = (string) $value;
         $len = strlen($key);

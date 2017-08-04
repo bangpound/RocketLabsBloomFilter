@@ -11,5 +11,5 @@ interface Hash
      * @param $value
      * @return string
      */
-    public function hash($value);
+    public function hash($value):string;
 }

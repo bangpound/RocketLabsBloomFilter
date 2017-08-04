@@ -10,7 +10,7 @@ class Crc32b implements Hash
     /**
      * @inheritdoc
      */
-    public function hash($value)
+    public function hash($value):string
     {
         return sprintf('%u', hexdec(hash('crc32b', $value)));
     }

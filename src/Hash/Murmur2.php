@@ -10,7 +10,7 @@ class Murmur2 implements Hash
     /**
      * @inheritdoc
      */
-    public function hash($value)
+    public function hash($value):string
     {
         $m = 0x5bd1e995;
         $r = 24;
