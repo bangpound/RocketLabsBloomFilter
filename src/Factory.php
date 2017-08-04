@@ -50,11 +50,11 @@ class Factory
      */
     public static function optimalBitSize($setSize, $falsePositiveProbability = 0.001)
     {
-        return (int) round((($setSize * log($falsePositiveProbability)) / (log(2) ** 2)) * -1);
+        return (int) ceil((($setSize * log($falsePositiveProbability)) / (log(2) ** 2)) * -1);
     }
 
     /**
-     * k = round(log(2.0) * m / n);
+     * k = ceil(log(2.0) * m / n);
      * k - Number of hash functions
      * m - Number of bits in the filter
      * n - Number of items in the filter
@@ -65,7 +65,7 @@ class Factory
      */
     public static function optimalHashCount($setSize, $bitSize)
     {
-        return (int) round(($bitSize / $setSize) * log(2));
+        return (int) ceil(($bitSize / $setSize) * log(2));
     }
 
 }

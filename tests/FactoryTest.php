@@ -33,7 +33,7 @@ class FactoryTest extends TestCase
         $m = 1024; // Number fo bits
 
         $this->assertEquals(
-            (int) round(($n / $m) * log(2)),
+            (int) ceil(($n / $m) * log(2)),
             Factory::optimalHashCount($m, $n)
         );
     }
@@ -79,18 +79,18 @@ class FactoryTest extends TestCase
                 '$size' => 1000,
                 '$probability' => 0.01,
                 '$expectedHashSize' => 7,
-                '$expectedBitSize' => 9585
+                '$expectedBitSize' => 9586
             ],
             'Size: 1000, probability: 99,99%' => [
                 '$size' => 1000,
                 '$probability' => 0.0001,
-                '$expectedHashSize' => 13,
-                '$expectedBitSize' => 19170
+                '$expectedHashSize' => 14,
+                '$expectedBitSize' => 19171
             ],
             'Size: 1000000, probability: 99,99%' => [
                 '$size' => 1000000,
                 '$probability' => 0.0001,
-                '$expectedHashSize' => 13,
+                '$expectedHashSize' => 14,
                 '$expectedBitSize' => 19170117 //2.3Mb
             ]
         ];
