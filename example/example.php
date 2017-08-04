@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use RocketLabs\BloomFilter\Factory;
 use RocketLabs\BloomFilter\Persist\Redis;
 use RocketLabs\BloomFilter\BloomFilter;
 use RocketLabs\BloomFilter\Persist\BitString;
@@ -28,11 +29,11 @@ while (($data = fgetcsv($handle) ) !== false) {
 $time_start = microtime_float();
 
 $filters = [
-    'Redis' => BloomFilter::createFromApproximateSize(Redis::create(), 10000, 0.001),
-    'BitString' => BloomFilter::createFromApproximateSize(new BitString(), 10000, 0.001),
-    'BitString Jenkins' => BloomFilter::createFromApproximateSize(new BitString(), 10000, 0.001),
-    'BitString Jenkins 3 hash function' => BloomFilter::create(new BitString(), 100000, 3, ['Jenkins']),
-    'BitString Crc32b' => BloomFilter::createFromApproximateSize(new BitString(), 10000, 0.001, ['Crc32b']),
+    'Redis' => Factory::createFromApproximateSize(Redis::create(), 10000, 0.001),
+    'BitString' => Factory::createFromApproximateSize(new BitString(), 10000, 0.001),
+    'BitString Jenkins' => Factory::createFromApproximateSize(new BitString(), 10000, 0.001),
+    'BitString Jenkins 3 hash function' => new BloomFilter(new BitString(), 100000, 3, ['Jenkins']),
+    'BitString Crc32b' => Factory::createFromApproximateSize(new BitString(), 10000, 0.001, ['Crc32b']),
 ];
 
 echo 'Messages: ' . count($messages) . "\n";
