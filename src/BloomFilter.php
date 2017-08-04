@@ -112,7 +112,7 @@ class BloomFilter
     {
         $bits = $this->persister->getBulk($this->getBits($value));
 
-        return !in_array(0, $bits);
+        return !in_array(0, $bits, true);
     }
 
     /**
