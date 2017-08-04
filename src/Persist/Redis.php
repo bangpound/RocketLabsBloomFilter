@@ -24,10 +24,10 @@ class Redis implements Persister
     {
         $redis = new \Redis();
 
-        $host = isset($params['host']) ? $params['host'] : self::DEFAULT_HOST;
-        $port = isset($params['port']) ? $params['port'] :self::DEFAULT_PORT;
-        $db = isset($params['db']) ? $params['db'] : self::DEFAULT_DB;
-        $key = isset($params['key']) ? $params['key'] : self::DEFAULT_KEY;
+        $host = $params['host'] ?? self::DEFAULT_HOST;
+        $port = $params['port'] ?? self::DEFAULT_PORT;
+        $db = $params['db'] ?? self::DEFAULT_DB;
+        $key = $params['key'] ?? self::DEFAULT_KEY;
 
         $redis->connect($host, $port);
         $redis->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP);
