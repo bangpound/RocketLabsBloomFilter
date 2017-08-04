@@ -2,9 +2,10 @@
 
 namespace RocketLabs\BloomFilter\Test\Persist;
 
+use PHPUnit\Framework\TestCase;
 use RocketLabs\BloomFilter\Persist\BitString;
 
-class BitStringTest extends \PHPUnit_Framework_TestCase
+class BitStringTest extends TestCase
 {
     /**
      * @test

@@ -2,9 +2,10 @@
 
 namespace RocketLabs\BloomFilter\Test\Hash;
 
+use PHPUnit\Framework\TestCase;
 use RocketLabs\BloomFilter\Hash\Fnv;
 
-class FnvTest extends \PHPUnit_Framework_TestCase
+class FnvTest extends TestCase
 {
     /**
      * @test

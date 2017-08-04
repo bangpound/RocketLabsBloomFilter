@@ -2,9 +2,10 @@
 
 namespace RocketLabs\BloomFilter\Test\Hash;
 
+use PHPUnit\Framework\TestCase;
 use RocketLabs\BloomFilter\Hash\Murmur;
 
-class MurmurTest extends \PHPUnit_Framework_TestCase
+class MurmurTest extends TestCase
 {
     /**
      * @test

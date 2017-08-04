@@ -2,9 +2,10 @@
 
 namespace RocketLabs\BloomFilter\Test\Persist;
 
+use PHPUnit\Framework\TestCase;
 use RocketLabs\BloomFilter\Persist\Redis;
 
-class RedisTest extends \PHPUnit_Framework_TestCase
+class RedisTest extends TestCase
 {
 
     /**
@@ -12,7 +13,7 @@ class RedisTest extends \PHPUnit_Framework_TestCase
      */
     public function setBit()
     {
-        $redisMock = $this->getMock(\Redis::class);
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         $redisMock->expects($this->once())
             ->method('setBit')
             ->willReturn(1)
@@ -27,7 +28,7 @@ class RedisTest extends \PHPUnit_Framework_TestCase
      */
     public function getBit()
     {
-        $redisMock = $this->getMock(\Redis::class);
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         $redisMock->expects($this->once())
             ->method('getBit')
             ->willReturn(0)
@@ -43,7 +44,7 @@ class RedisTest extends \PHPUnit_Framework_TestCase
      */
     public function setNegativeBit()
     {
-        $redisMock = $this->getMock(\Redis::class);
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         /** @var \Redis $redisMock */
         $persister = new Redis($redisMock, Redis::DEFAULT_KEY);
         $persister->set(-1);
@@ -55,7 +56,7 @@ class RedisTest extends \PHPUnit_Framework_TestCase
      */
     public function getNegativeBit()
     {
-        $redisMock = $this->getMock(\Redis::class);
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         /** @var \Redis $redisMock */
         $persister = new Redis($redisMock, Redis::DEFAULT_KEY);
         $persister->set(-1);
@@ -69,7 +70,7 @@ class RedisTest extends \PHPUnit_Framework_TestCase
      */
     public function getWrongBitValue()
     {
-        $redisMock = $this->getMock(\Redis::class);
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         /** @var \Redis $redisMock */
         $persister = new Redis($redisMock, Redis::DEFAULT_KEY);
         $persister->set('test');
@@ -82,8 +83,8 @@ class RedisTest extends \PHPUnit_Framework_TestCase
     public function setBits()
     {
         $bits = [2, 16, 250];
-        $pipeMock = $this->getMock(\Redis::class);
-        $redisMock = $this->getMock(\Redis::class);
+        $pipeMock = $this->getMockBuilder(\Redis::class)->getMock();
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         $redisMock->expects($this->once())
             ->method('pipeline')
             ->willReturn($pipeMock);
@@ -111,8 +112,8 @@ class RedisTest extends \PHPUnit_Framework_TestCase
     public function getBits()
     {
         $bits = [2, 16, 250];
-        $pipeMock = $this->getMock(\Redis::class);
-        $redisMock = $this->getMock(\Redis::class);
+        $pipeMock = $this->getMockBuilder(\Redis::class)->getMock();
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         $redisMock->expects($this->once())
             ->method('pipeline')
             ->willReturn($pipeMock);

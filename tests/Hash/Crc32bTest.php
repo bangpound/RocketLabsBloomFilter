@@ -2,9 +2,10 @@
 
 namespace RocketLabs\BloomFilter\Test\Hash;
 
+use PHPUnit\Framework\TestCase;
 use RocketLabs\BloomFilter\Hash\Crc32b;
 
-class Crc32bTest extends \PHPUnit_Framework_TestCase
+class Crc32bTest extends TestCase
 {
     /**
      * @test

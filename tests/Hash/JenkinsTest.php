@@ -2,9 +2,10 @@
 
 namespace RocketLabs\BloomFilter\Test\Hash;
 
+use PHPUnit\Framework\TestCase;
 use RocketLabs\BloomFilter\Hash\Jenkins;
 
-class JenkinsTest extends \PHPUnit_Framework_TestCase
+class JenkinsTest extends TestCase
 {
     /**
      * @test

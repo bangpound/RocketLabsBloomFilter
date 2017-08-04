@@ -2,11 +2,12 @@
 
 namespace RocketLabs\BloomFilter\Test\Hash;
 
+use PHPUnit\Framework\TestCase;
 use RocketLabs\BloomFilter\BloomFilter;
 use RocketLabs\BloomFilter\Persist\Redis;
 use RocketLabs\BloomFilter\Persist\Persister;
 
-class BloomFilterTest extends \PHPUnit_Framework_TestCase
+class BloomFilterTest extends TestCase
 {
     /**
      * @test
@@ -47,7 +48,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function createFromApproximateSize($size, $probability, $expectedHashSize, $expectedBitSize)
     {
-        $redisMock = $this->getMock(\Redis::class);
+        $redisMock = $this->getMockBuilder(\Redis::class)->getMock();
         $persister = new Redis($redisMock, Redis::DEFAULT_KEY);
 
         $class = new \ReflectionClass(BloomFilter::class);
@@ -99,7 +100,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function addToFilter()
     {
-        $persister = $this->getMock(Persister::class);
+        $persister = $this->getMockBuilder(Persister::class)->getMock();
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
@@ -114,7 +115,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function addBulkFilter()
     {
-        $persister = $this->getMock(Persister::class);
+        $persister = $this->getMockBuilder(Persister::class)->getMock();
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
@@ -134,7 +135,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function existsInFilter()
     {
-        $persister = $this->getMock(Persister::class);
+        $persister = $this->getMockBuilder(Persister::class)->getMock();
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
@@ -156,7 +157,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function DoesNotExistInFilter()
     {
-        $persister = $this->getMock(Persister::class);
+        $persister = $this->getMockBuilder(Persister::class)->getMock();
         $persister->expects($this->once())
             ->method('setBulk')
             ->willReturn(1)
@@ -180,7 +181,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function unavailableHashes()
     {
-        $persister = $this->getMock(Persister::class);
+        $persister = $this->getMockBuilder(Persister::class)->getMock();
         new BloomFilter($persister, 1024, 3, ['NotAFilter']);
     }
 
@@ -190,7 +191,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function createFromApproximateSizeOutOfRange()
     {
-        $persister = $this->getMock(Persister::class);
+        $persister = $this->getMockBuilder(Persister::class)->getMock();
         BloomFilter::createFromApproximateSize($persister, 1024, 2);
     }
 
@@ -199,7 +200,7 @@ class BloomFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function create()
     {
-        $persister = $this->getMock(Persister::class);
+        $persister = $this->getMockBuilder(Persister::class)->getMock();
         $filter = BloomFilter::create($persister,1024, 3);
         $this->assertInstanceOf(BloomFilter::class, $filter);
     }
