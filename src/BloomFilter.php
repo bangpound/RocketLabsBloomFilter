@@ -17,7 +17,7 @@ class BloomFilter
     /** @var Hash[]  */
     private $hashes;
     /** @var array */
-    private $availableHashes = ['Crc32b', 'Fnv', 'Jenkins', 'Murmur'];
+    private $availableHashes = ['Crc32b', 'Fnv', 'Jenkins', 'Murmur2'];
 
     /**
      * @param Persister $persister

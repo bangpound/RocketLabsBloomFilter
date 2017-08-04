@@ -5,7 +5,7 @@ namespace RocketLabs\BloomFilter\Hash;
 /**
  * @author Igor Veremchuk igor.veremchuk@rocket-internet.de
  */
-class Murmur implements Hash
+class Murmur2 implements Hash
 {
     /**
      * @inheritdoc
