@@ -7,6 +7,9 @@
             "email": "igor.veremchuk@rocket-internet.de"
         }
     ],
+    "require": {
+        "php": "^7.1"
+    },
     "require-dev": {
         "phpunit/phpunit": "^6.2"
     },
