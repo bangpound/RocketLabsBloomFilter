@@ -16,6 +16,8 @@ class BloomFilter
     private $persister;
     /** @var Hash[]  */
     private $hashes;
+    /** @var int */
+    private $hashCount;
     /** @var array */
     private $availableHashes = ['Crc32b', 'Fnv', 'Jenkins', 'Murmur2'];
 
@@ -38,6 +40,7 @@ class BloomFilter
 
         $this->persister = $persister;
         $this->size = $size;
+        $this->hashCount = $hashCount;
         for ($i = 0; $i < $hashCount; $i++) {
             $hash = $hashFunctions[$i % count($hashFunctions)];
             $className = 'RocketLabs\\BloomFilter\\Hash\\' . $hash;
